@@ -1,0 +1,225 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Culinary Nest API Documentation",
+    "version": "1.0.0",
+    "description": "Culinary Nest API Documentation",
+    "contact": {
+      "name": "Dimas Febriyanto",
+      "email": "dimassfeb@gmail.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://culinary-nest.vercel.com/api",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/users/register": {
+      "post": {
+        "summary": "Register",
+        "description": "Create new user",
+        "tags": ["Auth"],
+        "operationId": "users.register",
+         "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "User's name address"
+                  },
+                    "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "User's email address"
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "User's password"
+                  }
+                },
+                "required": ["email", "password"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      }
+    },
+    "/users/login": {
+      "post": {
+        "summary": "Login",
+        "description": "Create new user",
+        "tags": ["Auth"],
+        "operationId": "users.login",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "User's email address"
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "User's password"
+                  }
+                },
+                "required": ["email", "password"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        }
+      }
+    },
+    "/products": {
+        "post": {
+            "summary": "Add products",
+            "description": "Add products restaurants",
+            "tags": ["Products"],
+            "operationId": "products.post",
+            "requestBody": {
+                "required": true,
+                "content": {
+                    "application/json":{
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "title": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "price": {
+                                    "type": "number"
+                                },
+                                "restaurant_id": {
+                                    "type": "integer"
+                                }
+                            },
+                            "required": ["title", "description", "price", "restaurant_id"]
+                        }
+                    }
+                }
+            }
+        },
+        "put": {
+            "summary": "Update products",
+            "description": "Update products restaurants",
+            "tags": ["Products"],
+            "operationId": "products.put",
+            "requestBody": {
+                "required": true,
+                "content": {
+                    "application/json":{
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "title": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "price": {
+                                    "type": "number"
+                                },
+                                "restaurant_id": {
+                                    "type": "integer"
+                                }
+                            },
+                            "required": ["title", "description", "price", "restaurant_id"]
+                        }
+                    }
+                }
+            },
+            "responses": {
+                "200": {
+                    "description": "Successful response",
+                    "content": {
+                    "application/json": {
+                        "example": {
+                        "users": [
+                            {
+                            "id": 1,
+                            "name": "John Doe"
+                            },
+                            {
+                            "id": 2,
+                            "name": "Jane Smith"
+                            }
+                        ]
+                        }
+                    }
+                    }
+                }
+            }
+        }
+    }
+
+  },
+  "components": {
+    "responses": {
+        "200": {
+            "description": "Status OK",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": true
+                }
+              }
+            }
+        },
+        "400": {
+            "description": "Status Bad Request",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": false,
+                  "message": "Payload is required."
+                }
+              }
+            }
+        },
+        "404": {
+            "description": "Status Not Found",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": false,
+                  "message": "Data not found."
+                }
+              }
+            }
+        }
+    }
+  }
+}
