@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "description": "Culinary Nest API Documentation",
     "contact": {
-      "name": "Dimas Febriyanto",
+      "name": "Dimas Febriyanto - Nabila",
       "email": "dimassfeb@gmail.com"
     }
   },
@@ -22,7 +22,7 @@
         "description": "Create new user",
         "tags": ["Auth"],
         "operationId": "users.register",
-         "requestBody": {
+        "requestBody": {
           "required": true,
           "content": {
             "application/json": {
@@ -33,7 +33,7 @@
                     "type": "string",
                     "description": "User's name address"
                   },
-                    "email": {
+                  "email": {
                     "type": "string",
                     "format": "email",
                     "description": "User's email address"
@@ -100,126 +100,125 @@
       }
     },
     "/products": {
-        "post": {
-            "summary": "Add products",
-            "description": "Add products restaurants",
-            "tags": ["Products"],
-            "operationId": "products.post",
-            "requestBody": {
-                "required": true,
-                "content": {
-                    "application/json":{
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "title": {
-                                    "type": "string"
-                                },
-                                "description": {
-                                    "type": "string"
-                                },
-                                "price": {
-                                    "type": "number"
-                                },
-                                "restaurant_id": {
-                                    "type": "integer"
-                                }
-                            },
-                            "required": ["title", "description", "price", "restaurant_id"]
-                        }
-                    }
-                }
+      "post": {
+        "summary": "Add products",
+        "description": "Add products restaurants",
+        "tags": ["Products"],
+        "operationId": "products.post",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "price": {
+                    "type": "number"
+                  },
+                  "restaurant_id": {
+                    "type": "integer"
+                  }
+                },
+                "required": ["title", "description", "price", "restaurant_id"]
+              }
             }
-        },
-        "put": {
-            "summary": "Update products",
-            "description": "Update products restaurants",
-            "tags": ["Products"],
-            "operationId": "products.put",
-            "requestBody": {
-                "required": true,
-                "content": {
-                    "application/json":{
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "title": {
-                                    "type": "string"
-                                },
-                                "description": {
-                                    "type": "string"
-                                },
-                                "price": {
-                                    "type": "number"
-                                },
-                                "restaurant_id": {
-                                    "type": "integer"
-                                }
-                            },
-                            "required": ["title", "description", "price", "restaurant_id"]
-                        }
-                    }
-                }
-            },
-            "responses": {
-                "200": {
-                    "description": "Successful response",
-                    "content": {
-                    "application/json": {
-                        "example": {
-                        "users": [
-                            {
-                            "id": 1,
-                            "name": "John Doe"
-                            },
-                            {
-                            "id": 2,
-                            "name": "Jane Smith"
-                            }
-                        ]
-                        }
-                    }
-                    }
-                }
-            }
+          }
         }
+      },
+      "put": {
+        "summary": "Update products",
+        "description": "Update products restaurants",
+        "tags": ["Products"],
+        "operationId": "products.put",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "price": {
+                    "type": "number"
+                  },
+                  "restaurant_id": {
+                    "type": "integer"
+                  }
+                },
+                "required": ["title", "description", "price", "restaurant_id"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": {
+                  "users": [
+                    {
+                      "id": 1,
+                      "name": "John Doe"
+                    },
+                    {
+                      "id": 2,
+                      "name": "Jane Smith"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
     }
-
   },
   "components": {
     "responses": {
-        "200": {
-            "description": "Status OK",
-            "content": {
-              "application/json": {
-                "example": {
-                  "status": true
-                }
-              }
+      "200": {
+        "description": "Status OK",
+        "content": {
+          "application/json": {
+            "example": {
+              "status": true
             }
-        },
-        "400": {
-            "description": "Status Bad Request",
-            "content": {
-              "application/json": {
-                "example": {
-                  "status": false,
-                  "message": "Payload is required."
-                }
-              }
-            }
-        },
-        "404": {
-            "description": "Status Not Found",
-            "content": {
-              "application/json": {
-                "example": {
-                  "status": false,
-                  "message": "Data not found."
-                }
-              }
-            }
+          }
         }
+      },
+      "400": {
+        "description": "Status Bad Request",
+        "content": {
+          "application/json": {
+            "example": {
+              "status": false,
+              "message": "Payload is required."
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Status Not Found",
+        "content": {
+          "application/json": {
+            "example": {
+              "status": false,
+              "message": "Data not found."
+            }
+          }
+        }
+      }
     }
   }
 }
