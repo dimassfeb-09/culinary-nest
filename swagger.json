@@ -129,6 +129,17 @@
               }
             }
           }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
         }
       },
       "put": {
@@ -180,6 +191,123 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/products_photo": {
+      "post": {
+        "summary": "Add products photo",
+        "description": "Add products photo restaurants",
+        "tags": ["Products Photo"],
+        "operationId": "products_photo.post",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "image_url": {
+                    "type": "string"
+                  },
+                  "product_id": {
+                    "type": "integer"
+                  }
+                },
+                "required": ["image_url", "product_id"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        }
+      }
+    },
+    "/products_review": {
+      "post": {
+        "summary": "Add products Review",
+        "description": "Add products Review",
+        "tags": ["Products Review"],
+        "operationId": "products_review.post",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "image_url": {
+                    "type": "string"
+                  },
+                  "product_id": {
+                    "type": "integer"
+                  }
+                },
+                "required": ["image_url", "product_id"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        }
+      }
+    },
+    "/restaurants": {
+      "post": {
+        "summary": "Add restaurants",
+        "description": "Add restaurants",
+        "tags": ["Restaurants"],
+        "operationId": "restaurants.post",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string"
+                  },
+                  "category_restaurant_id": {
+                    "type": "integer"
+                  }
+                },
+                "required": ["title", "description", "address", "restaurant_id"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
           }
         }
       }
