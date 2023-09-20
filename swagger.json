@@ -102,12 +102,23 @@
         }
       }
     },
-    "/users/update": {
+    "/users/update/{id}": {
       "put": {
         "summary": "Update Data User",
         "description": "Update data User",
         "tags": ["Auth"],
         "operationId": "users.update",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The user number to update.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -185,12 +196,25 @@
             "$ref": "#/components/responses/404"
           }
         }
-      },
+      }
+    },
+    "/products/{id}": {
       "put": {
         "summary": "Update products",
         "description": "Update products restaurants",
         "tags": ["Products"],
         "operationId": "products.put",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The products number to update.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -272,12 +296,25 @@
             "$ref": "#/components/responses/400"
           }
         }
-      },
+      }
+    },
+    "/products_photo/{id}": {
       "put": {
         "summary": "Update products photo",
         "description": "Update products photo restaurants",
         "tags": ["Products Photo"],
         "operationId": "products_photo.put",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The products photo number to update.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -353,12 +390,25 @@
             "$ref": "#/components/responses/400"
           }
         }
-      },
+      }
+    },
+    "/products_review/{id}": {
       "put": {
         "summary": "Update products Review",
         "description": "Update products Review",
         "tags": ["Products Review"],
         "operationId": "products_review.put",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The products review number to update.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -446,12 +496,25 @@
             "$ref": "#/components/responses/400"
           }
         }
-      },
+      }
+    },
+    "/restaurants/{id}": {
       "put": {
         "summary": "Update restaurants",
         "description": "Update restaurants",
         "tags": ["Restaurants"],
         "operationId": "restaurants.put",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The restaurants number to update.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
