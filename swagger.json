@@ -54,6 +54,9 @@
           },
           "400": {
             "$ref": "#/components/responses/400"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
           }
         }
       }
@@ -492,6 +495,17 @@
             "example": {
               "success": false,
               "message": "Data not found."
+            }
+          }
+        }
+      },
+      "409": {
+        "description": "Status Conflict",
+        "content": {
+          "application/json": {
+            "example": {
+              "success": false,
+              "message": "Data already registered."
             }
           }
         }
