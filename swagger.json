@@ -99,6 +99,47 @@
         }
       }
     },
+    "/users/update": {
+      "put": {
+        "summary": "Update Data User",
+        "description": "Update data User",
+        "tags": ["Auth"],
+        "operationId": "users.update",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "User's name"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "User's email address"
+                  }
+                },
+                "required": ["email", "password"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        }
+      }
+    },
     "/products": {
       "post": {
         "summary": "Add products",
@@ -226,6 +267,39 @@
           },
           "400": {
             "$ref": "#/components/responses/400"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update products photo",
+        "description": "Update products photo restaurants",
+        "tags": ["Products Photo"],
+        "operationId": "products_photo.put",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "image_url": {
+                    "type": "string"
+                  },
+                  "product_id": {
+                    "type": "integer"
+                  }
+                },
+                "required": ["image_url", "product_id"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
           },
           "404": {
             "$ref": "#/components/responses/404"
@@ -239,6 +313,39 @@
         "description": "Add products Review",
         "tags": ["Products Review"],
         "operationId": "products_review.post",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "image_url": {
+                    "type": "string"
+                  },
+                  "product_id": {
+                    "type": "integer"
+                  }
+                },
+                "required": ["image_url", "product_id"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update products Review",
+        "description": "Update products Review",
+        "tags": ["Products Review"],
+        "operationId": "products_review.put",
         "requestBody": {
           "required": true,
           "content": {
@@ -310,6 +417,48 @@
             "$ref": "#/components/responses/400"
           }
         }
+      },
+      "put": {
+        "summary": "Update restaurants",
+        "description": "Update restaurants",
+        "tags": ["Restaurants"],
+        "operationId": "restaurants.put",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string"
+                  },
+                  "category_restaurant_id": {
+                    "type": "integer"
+                  }
+                },
+                "required": ["title", "description", "address", "restaurant_id"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/400"
+          }
+        }
       }
     }
   },
@@ -320,7 +469,7 @@
         "content": {
           "application/json": {
             "example": {
-              "status": true
+              "success": true
             }
           }
         }
@@ -330,7 +479,7 @@
         "content": {
           "application/json": {
             "example": {
-              "status": false,
+              "success": false,
               "message": "Payload is required."
             }
           }
@@ -341,7 +490,7 @@
         "content": {
           "application/json": {
             "example": {
-              "status": false,
+              "success": false,
               "message": "Data not found."
             }
           }
