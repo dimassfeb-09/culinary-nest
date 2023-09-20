@@ -323,14 +323,24 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "image_url": {
+                  "title": {
                     "type": "string"
                   },
+                  "content": {
+                    "type": "string"
+                  },
+                  "rating": {
+                    "type": "number",
+                    "example": 4.5
+                  },
                   "product_id": {
-                    "type": "integer"
+                    "type": "number"
+                  },
+                  "user_id": {
+                    "type": "number"
                   }
                 },
-                "required": ["image_url", "product_id"]
+                "required": ["title", "content","rating","product_id","user_id"]
               }
             }
           }
@@ -356,14 +366,24 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "image_url": {
+                  "title": {
                     "type": "string"
                   },
+                  "content": {
+                    "type": "string"
+                  },
+                  "rating": {
+                    "type": "number",
+                    "example": 4.5
+                  },
                   "product_id": {
-                    "type": "integer"
+                    "type": "number"
+                  },
+                  "user_id": {
+                    "type": "number"
                   }
                 },
-                "required": ["image_url", "product_id"]
+                "required": ["title", "content","rating","product_id","user_id"]
               }
             }
           }
@@ -403,11 +423,17 @@
                   "address": {
                     "type": "string"
                   },
+                  "open": {
+                    "type": "string"
+                  },
+                  "closed": {
+                    "type": "string"
+                  },
                   "category_restaurant_id": {
                     "type": "integer"
                   }
                 },
-                "required": ["title", "description", "address", "restaurant_id"]
+                "required": ["title", "description", "address", "open", "closed", "restaurant_id"]
               }
             }
           }
@@ -429,7 +455,7 @@
         "requestBody": {
           "required": true,
           "content": {
-            "application/json": {
+             "application/json": {
               "schema": {
                 "type": "object",
                 "properties": {
@@ -442,11 +468,17 @@
                   "address": {
                     "type": "string"
                   },
+                  "open": {
+                    "type": "string"
+                  },
+                  "closed": {
+                    "type": "string"
+                  },
                   "category_restaurant_id": {
                     "type": "integer"
                   }
                 },
-                "required": ["title", "description", "address", "restaurant_id"]
+                "required": ["title", "description", "address", "open", "closed", "restaurant_id"]
               }
             }
           }
