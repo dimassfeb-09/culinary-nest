@@ -249,11 +249,11 @@
                 "example": {
                   "success": true,
                   "data": {
-                      "title": "Sate Ayam Kecap",
-                      "description": "Sate ayam kecap enak..",
-                      "price": 20000,
-                      "restaurant_id": 1
-                    }
+                    "title": "Sate Ayam Kecap",
+                    "description": "Sate ayam kecap enak..",
+                    "price": 20000,
+                    "restaurant_id": 1
+                  }
                 }
               }
             }
@@ -390,6 +390,7 @@
             }
           }
         ],
+
         "requestBody": {
           "required": true,
           "content": {
@@ -426,7 +427,7 @@
         "description": "Get products photo restaurant",
         "tags": ["Products Photo"],
         "operationId": "products_photo.get",
-         "parameters": [
+        "parameters": [
           {
             "name": "id",
             "in": "query",
@@ -458,6 +459,17 @@
         "summary": "Delete a products photo",
         "description": "Deletes a products photo",
         "tags": ["Products Photo"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The products photo number to delete.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/200"
@@ -516,7 +528,7 @@
         }
       }
     },
-      "/products_review/{id}": {
+    "/products_review/{id}": {
       "put": {
         "summary": "Update products Review",
         "description": "Update products Review",
@@ -526,7 +538,7 @@
           {
             "name": "id",
             "in": "query",
-            "description": "The user number to update.",
+            "description": "The products review number to update.",
             "required": true,
             "schema": {
               "type": "integer"
@@ -585,32 +597,43 @@
         "description": "Get data products Review",
         "tags": ["Products Review"],
         "operationId": "products_review.get",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The product review number to retrive.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Status OK",
             "content": {
               "application/json": {
                 "schema": {
-                "type": "object",
-                "properties": {
-                  "success": {
-                    "type": "boolean",
-                    "example": true
-                  },
-                  "data": {
-                    "type": "array",
-                    "example": [
-                       {
-                        "title": "Enak banget",
-                        "content": "Dagingnya empuk dan lezat",
-                        "rating": 4.5,
-                        "product_id": 5,
-                        "user_id": 10
-                      }
-                    ]
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "example": [
+                        {
+                          "title": "Enak banget",
+                          "content": "Dagingnya empuk dan lezat",
+                          "rating": 4.5,
+                          "product_id": 5,
+                          "user_id": 10
+                        }
+                      ]
+                    }
                   }
                 }
-              }
               }
             }
           },
@@ -679,7 +702,7 @@
         }
       }
     },
-      "/products_review_photo/{id}": {
+    "/products_review_photo/{id}": {
       "put": {
         "summary": "Update products Review photo",
         "description": "Update products Review photo",
@@ -732,6 +755,17 @@
         "description": "Get all data products Review Photo",
         "tags": ["Products Review Photo"],
         "operationId": "products_review_photo.get",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The product review number to retrive.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -739,7 +773,7 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "success":{
+                    "success": {
                       "type": "boolean",
                       "example": true
                     },
@@ -863,11 +897,11 @@
     },
     "/restaurants/{id}": {
       "get": {
-         "summary": "Get restaurants by id",
-         "description": "Get restaurants by id",
-         "tags": ["Restaurants"],
-         "operationId": "restaurants.byid.get",
-         "parameters": [
+        "summary": "Get restaurants by id",
+        "description": "Get restaurants by id",
+        "tags": ["Restaurants"],
+        "operationId": "restaurants.byid.get",
+        "parameters": [
           {
             "name": "id",
             "in": "query",
@@ -878,7 +912,7 @@
             }
           }
         ],
-         "responses": {
+        "responses": {
           "200": {
             "content": {
               "application/json": {
@@ -887,19 +921,19 @@
                   "example": {
                     "success": true,
                     "data": {
-                        "title": "Warung Pak Wardi",
-                        "description": "Warung Pak Wardi is ...",
-                        "address": "Jl Kusuma",
-                        "open": "string",
-                        "closed": "datetime",
-                        "restaurant_id": 1
-                      }
+                      "title": "Warung Pak Wardi",
+                      "description": "Warung Pak Wardi is ...",
+                      "address": "Jl Kusuma",
+                      "open": "string",
+                      "closed": "datetime",
+                      "restaurant_id": 1
+                    }
                   }
                 }
               }
             }
           }
-         }
+        }
       },
       "put": {
         "summary": "Update restaurants",
@@ -1170,25 +1204,35 @@
         "description": "Get all data Restaurants by category",
         "tags": ["Restaurants Category"],
         "operationId": "restaurants_category.get",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "title": {
-                    "type": "string"
-                  }
-                },
-                "required": ["title"]
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/200"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "example": [
+                        {
+                          "id": 1,
+                          "title": "Restaurants"
+                        },
+                        {
+                          "id": 2,
+                          "title": "Cafe"
+                        }
+                      ]
+                    }
+                  },
+                  "required": ["title"]
+                }
+              }
+            }
           },
           "400": {
             "$ref": "#/components/responses/400"
@@ -1196,7 +1240,7 @@
         }
       }
     },
-      "/restaurants_category/{id}": {
+    "/restaurants_category/{id}": {
       "put": {
         "summary": "Update restaurants category",
         "description": "Update restaurants category",
@@ -1245,6 +1289,17 @@
         "summary": "Delete a restaurants category",
         "description": "Deletes a restaurants category",
         "tags": ["Restaurants Category"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The user number to update.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/200"
