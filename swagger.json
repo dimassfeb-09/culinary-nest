@@ -108,6 +108,17 @@
         "description": "Update data User",
         "tags": ["Auth"],
         "operationId": "users.update",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The user number to update.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -180,9 +191,6 @@
           },
           "400": {
             "$ref": "#/components/responses/400"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       },
@@ -191,6 +199,86 @@
         "description": "Get all data products restaurants",
         "tags": ["Products"],
         "operationId": "products.get",
+        "responses": {
+          "200": {
+            "description": "Status OK",
+            "content": {
+              "application/json": {
+                "example": {
+                  "success": true,
+                  "data": [
+                    {
+                      "title": "Sate Ayam Kecap",
+                      "description": "Sate ayam kecap enak..",
+                      "price": 20000,
+                      "restaurant_id": 1
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      }
+    },
+    "/products/{id}": {
+      "get": {
+        "summary": "Get products by id",
+        "description": "Get all data products restaurants",
+        "tags": ["Products"],
+        "operationId": "products.byid.get",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The products number to update.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Status OK",
+            "content": {
+              "application/json": {
+                "example": {
+                  "success": true,
+                  "data": {
+                      "title": "Sate Ayam Kecap",
+                      "description": "Sate ayam kecap enak..",
+                      "price": 20000,
+                      "restaurant_id": 1
+                    }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update products",
+        "description": "Update products restaurants",
+        "tags": ["Products"],
+        "operationId": "products.put",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The products number to update.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -225,62 +313,21 @@
           }
         }
       },
-      "put": {
-        "summary": "Update products",
-        "description": "Update products restaurants",
-        "tags": ["Products"],
-        "operationId": "products.put",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "title": {
-                    "type": "string"
-                  },
-                  "description": {
-                    "type": "string"
-                  },
-                  "price": {
-                    "type": "number"
-                  },
-                  "restaurant_id": {
-                    "type": "integer"
-                  }
-                },
-                "required": ["title", "description", "price", "restaurant_id"]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "example": {
-                  "users": [
-                    {
-                      "id": 1,
-                      "name": "John Doe"
-                    },
-                    {
-                      "id": 2,
-                      "name": "Jane Smith"
-                    }
-                  ]
-                }
-              }
-            }
-          }
-        }
-      },
       "delete": {
         "summary": "Delete a product",
         "description": "Deletes a product",
         "tags": ["Products"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The products number to update.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/200"
@@ -324,45 +371,25 @@
             "$ref": "#/components/responses/400"
           }
         }
-      },
-      "get": {
-        "summary": "Get products photo",
-        "description": "Get products photo restaurant",
-        "tags": ["Products Photo"],
-        "operationId": "products_photo.get",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "image_url": {
-                    "type": "string"
-                  },
-                  "product_id": {
-                    "type": "integer"
-                  }
-                },
-                "required": ["image_url", "product_id"]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/200"
-          },
-          "400": {
-            "$ref": "#/components/responses/400"
-          }
-        }
-      },
+      }
+    },
+    "/products_photo/{id}": {
       "put": {
         "summary": "Update products photo",
         "description": "Update products photo restaurants",
         "tags": ["Products Photo"],
         "operationId": "products_photo.put",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The user number to update.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -391,6 +418,39 @@
           },
           "404": {
             "$ref": "#/components/responses/404"
+          }
+        }
+      },
+      "get": {
+        "summary": "Get products photo",
+        "description": "Get products photo restaurant",
+        "tags": ["Products Photo"],
+        "operationId": "products_photo.get",
+         "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The products number to get all photos.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Status OK",
+            "content": {
+              "application/json": {
+                "example": {
+                  "success": true,
+                  "data": [
+                    "https://google.com/image.png",
+                    "https://google.com/image2.png"
+                  ]
+                }
+              }
+            }
           }
         }
       },
@@ -454,61 +514,25 @@
             "$ref": "#/components/responses/400"
           }
         }
-      },
-      "get": {
-        "summary": "Get all data products Review",
-        "description": "Get all data products Review",
-        "tags": ["Products Review"],
-        "operationId": "products_review.get",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "title": {
-                    "type": "string"
-                  },
-                  "content": {
-                    "type": "string"
-                  },
-                  "rating": {
-                    "type": "number",
-                    "example": 4.5
-                  },
-                  "product_id": {
-                    "type": "number"
-                  },
-                  "user_id": {
-                    "type": "number"
-                  }
-                },
-                "required": [
-                  "title",
-                  "content",
-                  "rating",
-                  "product_id",
-                  "user_id"
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/200"
-          },
-          "400": {
-            "$ref": "#/components/responses/400"
-          }
-        }
-      },
+      }
+    },
+      "/products_review/{id}": {
       "put": {
         "summary": "Update products Review",
         "description": "Update products Review",
         "tags": ["Products Review"],
         "operationId": "products_review.put",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The user number to update.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -556,10 +580,60 @@
           }
         }
       },
+      "get": {
+        "summary": "Get data products Review",
+        "description": "Get data products Review",
+        "tags": ["Products Review"],
+        "operationId": "products_review.get",
+        "responses": {
+          "200": {
+            "description": "Status OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                "type": "object",
+                "properties": {
+                  "success": {
+                    "type": "boolean",
+                    "example": true
+                  },
+                  "data": {
+                    "type": "array",
+                    "example": [
+                       {
+                        "title": "Enak banget",
+                        "content": "Dagingnya empuk dan lezat",
+                        "rating": 4.5,
+                        "product_id": 5,
+                        "user_id": 10
+                      }
+                    ]
+                  }
+                }
+              }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        }
+      },
       "delete": {
         "summary": "Delete a products Review",
         "description": "Deletes a products Review",
         "tags": ["Products Review"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The product review number to update.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/200"
@@ -603,45 +677,25 @@
             "$ref": "#/components/responses/400"
           }
         }
-      },
-      "get": {
-        "summary": "Get all data products Review Photo",
-        "description": "Get all data products Review Photo",
-        "tags": ["Products Review Photo"],
-        "operationId": "products_review_photo.get",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "image_url": {
-                    "type": "string"
-                  },
-                  "products_review_id": {
-                    "type": "integer"
-                  }
-                },
-                "required": ["image_url", "products_review_id"]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/200"
-          },
-          "400": {
-            "$ref": "#/components/responses/400"
-          }
-        }
-      },
+      }
+    },
+      "/products_review_photo/{id}": {
       "put": {
         "summary": "Update products Review photo",
         "description": "Update products Review photo",
         "tags": ["Products Review Photo"],
         "operationId": "products_review_photo.put",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The user number to update.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -673,6 +727,39 @@
           }
         }
       },
+      "get": {
+        "summary": "Get all data products Review Photo",
+        "description": "Get all data products Review Photo",
+        "tags": ["Products Review Photo"],
+        "operationId": "products_review_photo.get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success":{
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "example": [
+                        "https://google.com/image.png",
+                        "https://google.com/image2.png"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        }
+      },
       "delete": {
         "summary": "Delete a products Review photo",
         "description": "Deletes a products Review photo",
@@ -680,6 +767,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/200"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
           }
         }
       }
@@ -742,58 +832,91 @@
         "description": "Get all data Restaurants",
         "tags": ["Restaurants"],
         "operationId": "restaurants.get",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "title": {
-                    "type": "string"
-                  },
-                  "description": {
-                    "type": "string"
-                  },
-                  "address": {
-                    "type": "string"
-                  },
-                  "open": {
-                    "type": "string"
-                  },
-                  "closed": {
-                    "type": "string"
-                  },
-                  "category_restaurant_id": {
-                    "type": "integer"
-                  }
-                },
-                "required": [
-                  "title",
-                  "description",
-                  "address",
-                  "open",
-                  "closed",
-                  "restaurant_id"
-                ]
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/200"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "success": true,
+                    "data": [
+                      {
+                        "title": "Warung Pak Wardi",
+                        "description": "Warung Pak Wardi is ...",
+                        "address": "Jl Kusuma",
+                        "open": "string",
+                        "closed": "datetime",
+                        "restaurant_id": 1
+                      }
+                    ]
+                  }
+                }
+              }
+            }
           },
           "400": {
             "$ref": "#/components/responses/400"
           }
         }
+      }
+    },
+    "/restaurants/{id}": {
+      "get": {
+         "summary": "Get restaurants by id",
+         "description": "Get restaurants by id",
+         "tags": ["Restaurants"],
+         "operationId": "restaurants.byid.get",
+         "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The user number to update.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+         "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "success": true,
+                    "data": {
+                        "title": "Warung Pak Wardi",
+                        "description": "Warung Pak Wardi is ...",
+                        "address": "Jl Kusuma",
+                        "open": "string",
+                        "closed": "datetime",
+                        "restaurant_id": 1
+                      }
+                  }
+                }
+              }
+            }
+          }
+         }
       },
       "put": {
         "summary": "Update restaurants",
         "description": "Update restaurants",
         "tags": ["Restaurants"],
         "operationId": "restaurants.put",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The user number to update.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -844,10 +967,22 @@
           }
         }
       },
+
       "delete": {
         "summary": "Delete a restaurant",
         "description": "Deletes a restaurant",
         "tags": ["Restaurants"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The user number to update.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/200"
@@ -924,12 +1059,25 @@
             "$ref": "#/components/responses/400"
           }
         }
-      },
+      }
+    },
+    "/restaurants_photo/{id}": {
       "put": {
         "summary": "Update restaurants photo",
         "description": "Update restaurants photo",
         "tags": ["Restaurants Photo"],
         "operationId": "restaurants_photo.put",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The user number to update.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -965,9 +1113,23 @@
         "summary": "Delete a restaurants photo",
         "description": "Deletes a restaurants photo",
         "tags": ["Restaurants Photo"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The restaurant photo number to delete.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/200"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
           }
         }
       }
@@ -1032,12 +1194,25 @@
             "$ref": "#/components/responses/400"
           }
         }
-      },
+      }
+    },
+      "/restaurants_category/{id}": {
       "put": {
         "summary": "Update restaurants category",
         "description": "Update restaurants category",
         "tags": ["Restaurants Category"],
         "operationId": "restaurants_category.put",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The user number to update.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
