@@ -1,8 +1,45 @@
-.home {
+.container {
   height: 100vh;
-  position: absolute;
+  width: 100%;
 }
 
-.bg-home {
+.image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("./../public/assets/home.png");
   height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.culinaryNestImage {
+  height: 548px;
+  width: 1356px;
+}
+
+nav {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav > .logo {
+  height: 70px;
+  width: 70px;
+  margin: 0 20px;
+}
+
+nav > .register_btn {
+  background-color: #D9D9D9;
+  margin: 0 20px;
+  padding: 5px 20px;
+  border-radius: 35px;
+  color: #404040;
+  flex-shrink: 0;
+  text-decoration: none;
 }
