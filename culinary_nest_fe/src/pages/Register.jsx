@@ -42,10 +42,12 @@ const Register = () => {
 
     return (
         <div className="h-screen w-full bg-primary">
-            <div className="title flex gap-5 p-5 absolute">
-                <img className="h-12 w-12" src="/assets/Logo.png" alt="Logo"/>
-                <img className="h-12" src="/assets/Title_CulinaryNest.png" alt="Logo"/>
-            </div>
+            <Link to={'/'}>
+                <div className="title flex gap-5 p-5 absolute">
+                    <img className="h-12 w-12" src="/assets/Logo.png" alt="Logo"/>
+                    <img className="h-12" src="/assets/Title_CulinaryNest.png" alt="Logo"/>
+                </div>
+            </Link>
             <div className="w-full h-full flex items-center">
                 <div className="w-full md:w-1/2 px-5 md:px-10">
                     <div className="flex flex-col justify-center gap-4 items-center">
@@ -69,8 +71,9 @@ const Register = () => {
                         <Link to={'/login'} className="font-bold text-sm">Login Here!</Link>
                     </div>
                 </div>
-                <div className="h-min w-min bg-hero-home sm:h-screen sm:w-1/2">
-                    <div className="absolute bottom-0 items-center justify-center">
+                <div className="bg-hero-home hidden md:block sm:h-screen sm:w-1/2">
+                    <div className="absolute bottom-0 mt-auto">
+                        <CardGlass />
                     </div>
                 </div>
             </div>
