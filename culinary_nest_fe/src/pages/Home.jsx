@@ -15,10 +15,10 @@ export default function Home() {
       <div className="h-screen w-full bg-teal-500">
         <div className="bg-hero-home h-screen bg-cover justify-center items-center flex">
           <nav className="absolute top-0 flex w-full px-14 mt-5 items-center justify-between">
-            <img className="w-20 h-20" src="/assets/Logo.png" alt="Logo"/>
+            <img className="w-20 h-20" src="/assets/Logo.png"  draggable="false" alt="Logo"/>
             <Link to="/login" className="px-8 py-2 bg-button-gray text-lg rounded-full">Log In</Link>
           </nav>
-          <img className="absolute" src="/assets/Title_CulinaryNest.png" alt="Logo"/>
+          <img className="absolute" src="/assets/Title_CulinaryNest.png"  draggable="false" alt="Logo"/>
           <div className="absolute bottom-0 translate-y-14 find-city shadow-2xl md:h-40 rounded-3xl md:w-1/2 bg-white">
             <div className="flex items-center justify-between mx-20 my-8">
               <p className="font-bold text-xl ">Enter your city</p>
@@ -37,7 +37,7 @@ export default function Home() {
       </div>
       <div className="flex  translate-y-20 px-20 justify-center items-center ">
         <div className="w-[886px]">
-          <img src="/assets/our_serve.png" alt="Our Serve"/>
+          <img src="/assets/our_serve.png"  draggable="false" alt="Our Serve"/>
         </div>
         <div className="w-1/2 ">
           <div className="text-7xl font-bold">Our Serve</div>
