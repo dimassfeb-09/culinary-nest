@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BASE_URL } from "../constants/BASE_URL";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt, faClock } from "@fortawesome/free-solid-svg-icons";
+import CardResto from "../components/CardResto";
 
 const Search = () => {
   const { search } = useLocation();
@@ -109,10 +110,10 @@ const Search = () => {
           />
         </div>
         <div className="flex items-center gap-3">
-          <img src="assets\search.png" alt="filter" height={45} width={45} />
+          <img src="/assets/search.png" className="h-7 w-7 sm:h-[45px] sm:w-[45px]" alt="filter"/>
           <Link
             to="/register"
-            className="px-8 py-2 bg-button-gray text-lg rounded-full text-black"
+            className="px-1 py-1 lg:px-8 lg:py-2 bg-button-gray text-sm md:text-lg rounded-full text-black"
           >
             Sign Up
           </Link>
@@ -120,425 +121,56 @@ const Search = () => {
       </div>
       <div className="bg-cover bg-hero-search h-[300px] w-full">
         <div className="h-[300px] w-full bg-black/50  flex justify-center items-center">
-          <div className="text-7xl font-bold text-white">Taste Map of Bali</div>
+          <div className="text-7xl font-bold text-white">Taste Map of {currentCity}</div>
         </div>
       </div>
 
       {/* Linked to home */}
-      <div className="w-full mt-6 mb-8 mx-10">
+      <div className="w-full mt-6 mb-8 px-5">
         <div className="flex items-center">
           <Link to="/">Home</Link>
           <span className="mx-2" style={{ fontSize: "1.5rem" }}>
             {" "}
             &gt;{" "}
           </span>
-          <div>Bali Destination</div>
+          <div>{currentCity} Destination</div>
         </div>
-        <hr className="my-2" style={{ borderTop: "1px solid #000" }} />
+        <div className="border-[1px] border-solid border-black"></div>
       </div>
 
       {/* Pilihan */}
       <div className="flex flex-nowrap">
         <div>
-          <img src="assets\Most_Popular.png" alt="most popular"></img>
+          <img src="/assets/Most_Popular.png" alt="most popular"></img>
         </div>
         <div>
-          <img src="assets\Typical_Food.png" alt="Typical Food"></img>
+          <img src="/assets/Typical_Food.png" alt="Typical Food"></img>
         </div>
         <div>
           <img
             className="fig-size"
-            src="assets\Family_Choice.png"
+            src="/assets/Family_Choice.png"
             alt="Family Choice"
           ></img>
         </div>
       </div>
-      <div className="grid grid-flow-row auto-rows-max">
-        <div className="container h-80 mx-auto flex items-center border-2 border-stone-200 mb-5 mt-5">
-          <div className="grid grid-rows-3 grid-flow-col gap-4 w-full">
-            <div className="row-span-3">
-              {/* Gambar (01) */}
-              <img
-                src="assets\resto1.png"
-                alt="Gambar"
-                className="w-64 h-80 object-cover"
-              />
-            </div>
-            <div className="col-span-2 mt-4">
-              {/* Judul dengan Rating (01) */}
-              <h1 className="text-3xl font-semibold mb-2">Judul Gambar</h1>
-              <div className="flex items-center">
-                {/* Rating Bintang (Anda bisa menambahkannya sesuai kebutuhan) */}
-                <span className="text-yellow-500 text-xl">★</span>
-                <span className="text-yellow-500 text-xl">★</span>
-                <span className="text-yellow-500 text-xl">★</span>
-                <span className="text-yellow-500 text-xl">★</span>
-                <span className="text-gray-400 text-xl">☆</span>
-              </div>
-            </div>
-            <div className="row-span-2 col-span-2 mt-4">
-              {/* Deskripsi (01) */}
-              <p className="mx-2 text-lg text-justify">
-                Our restaurant provides a stunning garden feel from the moment
-                you step inside. Surrounded by shady trees, beautiful ornamental
-                plants, and colorful flowers, visitors will feel as if they are
-                in the middle of a stunning flower garden. Our restaurant
-                provides a stunning garden feel from the moment you step inside.
-                Surrounded by shady trees, beautiful ornamental plants, and
-                colorful flowers, visitors will feel as if they are in the
-                middle of a stunning flower garden.
-              </p>
-              <div className="grid grid-cols-2 gap-2 mt-2">
-                {/* Lokasi dan Ikon Lokasi */}
-                <div className="flex items-center">
-                  <FontAwesomeIcon
-                    icon={faMapMarkerAlt} // Menggunakan ikon lokasi
-                    className="h-6 w-6 mr-2 text-gray-500"
-                  />
-                  <p className="text-lg">Lokasi: Nama Lokasi</p>
-                </div>
-                {/* Waktu Buka dan Ikon Jam */}
-                <div className="flex items-center">
-                  <FontAwesomeIcon
-                    icon={faClock} // Menggunakan ikon jam
-                    className="h-6 w-6 mr-2 text-gray-500"
-                  />
-                  <p className="text-lg">Waktu Buka: 09:00 AM</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="container h-80 mx-auto flex items-center border-2 border-stone-200 mb-5">
-          <div className="grid grid-rows-3 grid-flow-col gap-4 w-full">
-            <div className="row-span-3">
-              {/* Gambar (02) */}
-              <img
-                src="assets\resto2.png"
-                alt="Gambar"
-                className="w-64 h-80 object-cover"
-              />
-            </div>
-            <div className="col-span-2 mt-4">
-              {/* Judul dengan Rating (02) */}
-              <h1 className="text-3xl font-semibold mb-2">Judul Gambar</h1>
-              <div className="flex items-center">
-                {/* Rating Bintang (Anda bisa menambahkannya sesuai kebutuhan) */}
-                <span className="text-yellow-500 text-xl">★</span>
-                <span className="text-yellow-500 text-xl">★</span>
-                <span className="text-yellow-500 text-xl">★</span>
-                <span className="text-yellow-500 text-xl">★</span>
-                <span className="text-gray-400 text-xl">☆</span>
-              </div>
-            </div>
-            <div className="row-span-2 col-span-2 mt-4">
-              {/* Deskripsi (02) */}
-              <p className="mx-2 text-lg text-justify">
-                Our restaurant provides a stunning garden feel from the moment
-                you step inside. Surrounded by shady trees, beautiful ornamental
-                plants, and colorful flowers, visitors will feel as if they are
-                in the middle of a stunning flower garden. Our restaurant
-                provides a stunning garden feel from the moment you step inside.
-                Surrounded by shady trees, beautiful ornamental plants, and
-                colorful flowers, visitors will feel as if they are in the
-                middle of a stunning flower garden.
-              </p>
-              <div className="grid grid-cols-2 gap-2 mt-2">
-                {/* Lokasi dan Ikon Lokasi */}
-                <div className="flex items-center">
-                  <FontAwesomeIcon
-                    icon={faMapMarkerAlt} // Menggunakan ikon lokasi
-                    className="h-6 w-6 mr-2 text-gray-500"
-                  />
-                  <p className="text-lg">Lokasi: Nama Lokasi</p>
-                </div>
-                {/* Waktu Buka dan Ikon Jam */}
-                <div className="flex items-center">
-                  <FontAwesomeIcon
-                    icon={faClock} // Menggunakan ikon jam
-                    className="h-6 w-6 mr-2 text-gray-500"
-                  />
-                  <p className="text-lg">Waktu Buka: 09:00 AM</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="container h-80 mx-auto flex items-center border-2 border-stone-200 mb-5">
-          <div className="grid grid-rows-3 grid-flow-col gap-4 w-full">
-            <div className="row-span-3">
-              {/* Gambar (03) */}
-              <img
-                src="assets\resto3.png"
-                alt="Gambar"
-                className="w-64 h-80 object-cover"
-              />
-            </div>
-            <div className="col-span-2 mt-4">
-              {/* Judul dengan Rating (03) */}
-              <h1 className="text-3xl font-semibold mb-2">Judul Gambar</h1>
-              <div className="flex items-center">
-                {/* Rating Bintang (Anda bisa menambahkannya sesuai kebutuhan) */}
-                <span className="text-yellow-500 text-xl">★</span>
-                <span className="text-yellow-500 text-xl">★</span>
-                <span className="text-yellow-500 text-xl">★</span>
-                <span className="text-yellow-500 text-xl">★</span>
-                <span className="text-gray-400 text-xl">☆</span>
-              </div>
-            </div>
-            <div className="row-span-2 col-span-2 mt-4">
-              {/* Deskripsi (03) */}
-              <p className="mx-2 text-lg text-justify">
-                Our restaurant provides a stunning garden feel from the moment
-                you step inside. Surrounded by shady trees, beautiful ornamental
-                plants, and colorful flowers, visitors will feel as if they are
-                in the middle of a stunning flower garden. Our restaurant
-                provides a stunning garden feel from the moment you step inside.
-                Surrounded by shady trees, beautiful ornamental plants, and
-                colorful flowers, visitors will feel as if they are in the
-                middle of a stunning flower garden.
-              </p>
-              <div className="grid grid-cols-2 gap-2 mt-2">
-                {/* Lokasi dan Ikon Lokasi */}
-                <div className="flex items-center">
-                  <FontAwesomeIcon
-                    icon={faMapMarkerAlt} // Menggunakan ikon lokasi
-                    className="h-6 w-6 mr-2 text-gray-500"
-                  />
-                  <p className="text-lg">Lokasi: Nama Lokasi</p>
-                </div>
-                {/* Waktu Buka dan Ikon Jam */}
-                <div className="flex items-center">
-                  <FontAwesomeIcon
-                    icon={faClock} // Menggunakan ikon jam
-                    className="h-6 w-6 mr-2 text-gray-500"
-                  />
-                  <p className="text-lg">Waktu Buka: 09:00 AM</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="container h-80 mx-auto flex items-center border-2 border-stone-200 mb-5">
-          <div className="grid grid-rows-3 grid-flow-col gap-4 w-full">
-            <div className="row-span-3">
-              {/* Gambar (04) */}
-              <img
-                src="assets\resto4.png"
-                alt="Gambar"
-                className="w-64 h-80 object-cover"
-              />
-            </div>
-            <div className="col-span-2 mt-4">
-              {/* Judul dengan Rating (04) */}
-              <h1 className="text-3xl font-semibold mb-2">Judul Gambar</h1>
-              <div className="flex items-center">
-                {/* Rating Bintang (Anda bisa menambahkannya sesuai kebutuhan) */}
-                <span className="text-yellow-500 text-xl">★</span>
-                <span className="text-yellow-500 text-xl">★</span>
-                <span className="text-yellow-500 text-xl">★</span>
-                <span className="text-yellow-500 text-xl">★</span>
-                <span className="text-gray-400 text-xl">☆</span>
-              </div>
-            </div>
-            <div className="row-span-2 col-span-2 mt-4">
-              {/* Deskripsi (04) */}
-              <p className="mx-2 text-lg text-justify">
-                Our restaurant provides a stunning garden feel from the moment
-                you step inside. Surrounded by shady trees, beautiful ornamental
-                plants, and colorful flowers, visitors will feel as if they are
-                in the middle of a stunning flower garden. Our restaurant
-                provides a stunning garden feel from the moment you step inside.
-                Surrounded by shady trees, beautiful ornamental plants, and
-                colorful flowers, visitors will feel as if they are in the
-                middle of a stunning flower garden.
-              </p>
-              <div className="grid grid-cols-2 gap-2 mt-2">
-                {/* Lokasi dan Ikon Lokasi */}
-                <div className="flex items-center">
-                  <FontAwesomeIcon
-                    icon={faMapMarkerAlt} // Menggunakan ikon lokasi
-                    className="h-6 w-6 mr-2 text-gray-500"
-                  />
-                  <p className="text-lg">Lokasi: Nama Lokasi</p>
-                </div>
-                {/* Waktu Buka dan Ikon Jam */}
-                <div className="flex items-center">
-                  <FontAwesomeIcon
-                    icon={faClock} // Menggunakan ikon jam
-                    className="h-6 w-6 mr-2 text-gray-500"
-                  />
-                  <p className="text-lg">Waktu Buka: 09:00 AM</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="container h-80 mx-auto flex items-center border-2 border-stone-200 mb-5">
-          <div className="grid grid-rows-3 grid-flow-col gap-4 w-full">
-            <div className="row-span-3">
-              {/* Gambar (04) */}
-              <img
-                src="assets\resto5.png"
-                alt="Gambar"
-                className="w-64 h-80 object-cover"
-              />
-            </div>
-            <div className="col-span-2 mt-4">
-              {/* Judul dengan Rating (04) */}
-              <h1 className="text-3xl font-semibold mb-2">Judul Gambar</h1>
-              <div className="flex items-center">
-                {/* Rating Bintang (Anda bisa menambahkannya sesuai kebutuhan) */}
-                <span className="text-yellow-500 text-xl">★</span>
-                <span className="text-yellow-500 text-xl">★</span>
-                <span className="text-yellow-500 text-xl">★</span>
-                <span className="text-yellow-500 text-xl">★</span>
-                <span className="text-gray-400 text-xl">☆</span>
-              </div>
-            </div>
-            <div className="row-span-2 col-span-2 mt-4">
-              {/* Deskripsi (04) */}
-              <p className="mx-2 text-lg text-justify">
-                Our restaurant provides a stunning garden feel from the moment
-                you step inside. Surrounded by shady trees, beautiful ornamental
-                plants, and colorful flowers, visitors will feel as if they are
-                in the middle of a stunning flower garden. Our restaurant
-                provides a stunning garden feel from the moment you step inside.
-                Surrounded by shady trees, beautiful ornamental plants, and
-                colorful flowers, visitors will feel as if they are in the
-                middle of a stunning flower garden.
-              </p>
-              <div className="grid grid-cols-2 gap-2 mt-2">
-                {/* Lokasi dan Ikon Lokasi */}
-                <div className="flex items-center">
-                  <FontAwesomeIcon
-                    icon={faMapMarkerAlt} // Menggunakan ikon lokasi
-                    className="h-6 w-6 mr-2 text-gray-500"
-                  />
-                  <p className="text-lg">Lokasi: Nama Lokasi</p>
-                </div>
-                {/* Waktu Buka dan Ikon Jam */}
-                <div className="flex items-center">
-                  <FontAwesomeIcon
-                    icon={faClock} // Menggunakan ikon jam
-                    className="h-6 w-6 mr-2 text-gray-500"
-                  />
-                  <p className="text-lg">Waktu Buka: 09:00 AM</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="container h-80 mx-auto flex items-center border-2 border-stone-200 mb-5">
-          <div className="grid grid-rows-3 grid-flow-col gap-4 w-full">
-            <div className="row-span-3">
-              {/* Gambar (04) */}
-              <img
-                src="assets\resto6.png"
-                alt="Gambar"
-                className="w-64 h-80 object-cover"
-              />
-            </div>
-            <div className="col-span-2 mt-4">
-              {/* Judul dengan Rating (04) */}
-              <h1 className="text-3xl font-semibold mb-2">Judul Gambar</h1>
-              <div className="flex items-center">
-                {/* Rating Bintang (Anda bisa menambahkannya sesuai kebutuhan) */}
-                <span className="text-yellow-500 text-xl">★</span>
-                <span className="text-yellow-500 text-xl">★</span>
-                <span className="text-yellow-500 text-xl">★</span>
-                <span className="text-yellow-500 text-xl">★</span>
-                <span className="text-gray-400 text-xl">☆</span>
-              </div>
-            </div>
-            <div className="row-span-2 col-span-2 mt-4">
-              {/* Deskripsi (04) */}
-              <p className="mx-2 text-lg text-justify">
-                Our restaurant provides a stunning garden feel from the moment
-                you step inside. Surrounded by shady trees, beautiful ornamental
-                plants, and colorful flowers, visitors will feel as if they are
-                in the middle of a stunning flower garden. Our restaurant
-                provides a stunning garden feel from the moment you step inside.
-                Surrounded by shady trees, beautiful ornamental plants, and
-                colorful flowers, visitors will feel as if they are in the
-                middle of a stunning flower garden.
-              </p>
-              <div className="grid grid-cols-2 gap-2 mt-2">
-                {/* Lokasi dan Ikon Lokasi */}
-                <div className="flex items-center">
-                  <FontAwesomeIcon
-                    icon={faMapMarkerAlt} // Menggunakan ikon lokasi
-                    className="h-6 w-6 mr-2 text-gray-500"
-                  />
-                  <p className="text-lg">Lokasi: Nama Lokasi</p>
-                </div>
-                {/* Waktu Buka dan Ikon Jam */}
-                <div className="flex items-center">
-                  <FontAwesomeIcon
-                    icon={faClock} // Menggunakan ikon jam
-                    className="h-6 w-6 mr-2 text-gray-500"
-                  />
-                  <p className="text-lg">Waktu Buka: 09:00 AM</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="container h-80 mx-auto flex items-center border-2 border-stone-200 mb-5">
-          <div className="grid grid-rows-3 grid-flow-col gap-4 w-full">
-            <div className="row-span-3">
-              {/* Gambar (04) */}
-              <img
-                src="assets\resto7.png"
-                alt="Gambar"
-                className="w-64 h-80 object-cover"
-              />
-            </div>
-            <div className="col-span-2 mt-4">
-              {/* Judul dengan Rating (04) */}
-              <h1 className="text-3xl font-semibold mb-2">Judul Gambar</h1>
-              <div className="flex items-center">
-                {/* Rating Bintang (Anda bisa menambahkannya sesuai kebutuhan) */}
-                <span className="text-yellow-500 text-xl">★</span>
-                <span className="text-yellow-500 text-xl">★</span>
-                <span className="text-yellow-500 text-xl">★</span>
-                <span className="text-yellow-500 text-xl">★</span>
-                <span className="text-gray-400 text-xl">☆</span>
-              </div>
-            </div>
-            <div className="row-span-2 col-span-2 mt-4">
-              {/* Deskripsi (04) */}
-              <p className="mx-2 text-lg text-justify">
-                Our restaurant provides a stunning garden feel from the moment
-                you step inside. Surrounded by shady trees, beautiful ornamental
-                plants, and colorful flowers, visitors will feel as if they are
-                in the middle of a stunning flower garden. Our restaurant
-                provides a stunning garden feel from the moment you step inside.
-                Surrounded by shady trees, beautiful ornamental plants, and
-                colorful flowers, visitors will feel as if they are in the
-                middle of a stunning flower garden.
-              </p>
-              <div className="grid grid-cols-2 gap-2 mt-2">
-                {/* Lokasi dan Ikon Lokasi */}
-                <div className="flex items-center">
-                  <FontAwesomeIcon
-                    icon={faMapMarkerAlt} // Menggunakan ikon lokasi
-                    className="h-6 w-6 mr-2 text-gray-500"
-                  />
-                  <p className="text-lg">Lokasi: Nama Lokasi</p>
-                </div>
-                {/* Waktu Buka dan Ikon Jam */}
-                <div className="flex items-center">
-                  <FontAwesomeIcon
-                    icon={faClock} // Menggunakan ikon jam
-                    className="h-6 w-6 mr-2 text-gray-500"
-                  />
-                  <p className="text-lg">Waktu Buka: 09:00 AM</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div className="flex flex-col justify-center items-center mt-20">
+        <CardResto
+            title={"Restoran 1"}
+            imageUrl={"/assets/resto1.png"}
+            description={"Our restaurant provides a stunning garden feel from the moment you step inside. Surrounded by shady trees, beautiful ornamental plants, and colorful flowers, visitors will feel"}
+            rating={5}
+            open={"18.00"}
+            location={"Bekasi, Jawa Barat"}
+        />
+        <CardResto
+            title={"Restoran 2"}
+            imageUrl={"/assets/resto2.png"}
+            description={"Our restaurant provides a stunning garden feel from the moment you step inside. Surrounded by shady trees, beautiful ornamental plants, and colorful flowers, visitors will feel"}
+            rating={5}
+            open={"18.00"}
+            location={"Bekasi, Jawa Barat"}
+        />
       </div>
     </>
   );
