@@ -43,7 +43,7 @@ const Register = () => {
   return (
     <div className="h-screen w-full bg-primary">
       <Link to={"/"}>
-        <div className="title flex gap-5 p-5 absolute">
+        <div className="title flex gap-2 p-5 absolute">
           <img className="h-12 w-12" src="/assets/Logo.png" alt="Logo" />
           <img
             className="h-12"
