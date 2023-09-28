@@ -19,6 +19,7 @@ module.exports = {
         "category-04": "url('/public/assets/category/category_04.png')",
         "category-05": "url('/public/assets/category/category_05.png')",
         "category-06": "url('/public/assets/category/category_06.png')",
+        "hero-search": "url('/public/assets/hero-search.png')",
       },
     },
   },

@@ -84,7 +84,8 @@ const Search = () => {
   }, []);
 
   return (
-    <div>
+    <>
+      {/* // Header */}
       <div className="h-20 w-full bg-primary text-white flex items-center justify-between px-5">
         <Link to={"/"}>
           <div className="title flex gap-5 p-5">
@@ -112,8 +113,12 @@ const Search = () => {
           Sign Up
         </Link>
       </div>
-      <div></div>
-    </div>
+      <div className="bg-cover bg-hero-search h-[300px] w-full">
+        <div className="h-[300px] w-full bg-black/50  flex justify-center items-center">
+          <div className="text-7xl font-bold text-white">Taste Map of Bali</div>
+        </div>
+      </div>
+    </>
   );
 };
 
