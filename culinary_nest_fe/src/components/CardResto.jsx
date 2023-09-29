@@ -19,45 +19,42 @@ const CardResto = ({
   ));
 
   return (
-    <div className="container flex items-center border-2 border-stone-200 mb-5">
+    <div className="flex flex-col md:flex-row justify-between border-2 border-stone-200 mb-5">
       {/* Image */}
-      <div className="w-36 h-36 mr-6">
-        <img
-          src={imageUrl}
-          alt="Gambar"
-          className="w-full h-full object-cover"
-        />
+      <div className="h-64 w-full  md:h-56 md:w-56  bg-teal-500">
+        <img className="w-full h-full" src={imageUrl} alt={title}/>
       </div>
 
-      {/* Content */}
-      <div className="flex flex-col justify-between">
+
+       {/*Content*/}
+      <div className="flex flex-col justify-between w-full p-5">
         <div>
           {/* Title */}
           <span className="text-lg font-semibold mb-2">{title}</span>
 
-          <div class="flex space-x-4">
+          <div className="flex justify-between">
             {/* Stars */}
             <div className="flex items-center mb-2">
               <span>{stars}</span>
             </div>
             {/* Menu */}
             <div>
-              <Link to="/menu" className="underline ml-8 pl-2 text-red-500">
+              <Link to="/menu" className="underline pl-2 text-red-500">
                 Menu
               </Link>
             </div>
           </div>
 
           {/* Description */}
-          <p className="text-sm text-justify">{description}</p>
+          <div className="text-sm lg:text-lg text-justify w-full h-20 overflow-hidden">{description}</div>
         </div>
 
-        <div className="grid grid-cols-2 gap-2 mt-2 text-sm">
+        <div className="flex gap-4 mt-2 items-center text-sm">
           {/* Lokasi dan Ikon Lokasi */}
           <div className="flex items-center">
             <FontAwesomeIcon
               icon={faMapMarkerAlt} // Menggunakan ikon lokasi
-              className="h-4 w-4 mr-2 text-gray-500"
+              className="h-4 w-4 mr-2 text-red-500"
             />
             <p>Lokasi: {location}</p>
           </div>
@@ -71,6 +68,7 @@ const CardResto = ({
           </div>
         </div>
       </div>
+
     </div>
   );
 };

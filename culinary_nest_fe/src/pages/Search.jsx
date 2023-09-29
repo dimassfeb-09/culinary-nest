@@ -125,7 +125,7 @@ const Search = () => {
       </div>
       <div className="bg-cover bg-hero-search h-[300px] w-full">
         <div className="h-[300px] w-full bg-black/50  flex justify-center items-center">
-          <div className="text-7xl font-bold text-white">
+          <div className="text-4xl md:text-7xl font-bold text-white">
             Taste Map of {currentCity}
           </div>
         </div>
@@ -160,11 +160,13 @@ const Search = () => {
           ></img>
         </div>
       </div>
-      <div className="flex flex-col justify-center items-center mt-20">
+      <div className="flex flex-col mx-5 sm:mx-10 lg:mx-20 mt-20">
         <CardResto
           title={"Restoran 1"}
           imageUrl={"/assets/resto1.png"}
-          description={"test"}
+          description={
+            "Our restaurant provides a stunning garden feel from the moment you step inside. Surrounded by shady trees, beautiful ornamental plants, and colorful flowers, visitors will feel"
+          }
           rating={5}
           open={"18.00"}
           location={"Bekasi, Jawa Barat"}
