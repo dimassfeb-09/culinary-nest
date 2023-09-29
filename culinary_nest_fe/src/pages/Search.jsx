@@ -110,7 +110,11 @@ const Search = () => {
           />
         </div>
         <div className="flex items-center gap-3">
-          <img src="/assets/search.png" className="h-7 w-7 sm:h-[45px] sm:w-[45px]" alt="filter"/>
+          <img
+            src="/assets/search.png"
+            className="h-7 w-7 sm:h-[45px] sm:w-[45px]"
+            alt="filter"
+          />
           <Link
             to="/register"
             className="px-1 py-1 lg:px-8 lg:py-2 bg-button-gray text-sm md:text-lg rounded-full text-black"
@@ -121,7 +125,9 @@ const Search = () => {
       </div>
       <div className="bg-cover bg-hero-search h-[300px] w-full">
         <div className="h-[300px] w-full bg-black/50  flex justify-center items-center">
-          <div className="text-7xl font-bold text-white">Taste Map of {currentCity}</div>
+          <div className="text-7xl font-bold text-white">
+            Taste Map of {currentCity}
+          </div>
         </div>
       </div>
 
@@ -156,20 +162,22 @@ const Search = () => {
       </div>
       <div className="flex flex-col justify-center items-center mt-20">
         <CardResto
-            title={"Restoran 1"}
-            imageUrl={"/assets/resto1.png"}
-            description={"Our restaurant provides a stunning garden feel from the moment you step inside. Surrounded by shady trees, beautiful ornamental plants, and colorful flowers, visitors will feel"}
-            rating={5}
-            open={"18.00"}
-            location={"Bekasi, Jawa Barat"}
+          title={"Restoran 1"}
+          imageUrl={"/assets/resto1.png"}
+          description={"test"}
+          rating={5}
+          open={"18.00"}
+          location={"Bekasi, Jawa Barat"}
         />
         <CardResto
-            title={"Restoran 2"}
-            imageUrl={"/assets/resto2.png"}
-            description={"Our restaurant provides a stunning garden feel from the moment you step inside. Surrounded by shady trees, beautiful ornamental plants, and colorful flowers, visitors will feel"}
-            rating={5}
-            open={"18.00"}
-            location={"Bekasi, Jawa Barat"}
+          title={"Restoran 2"}
+          imageUrl={"/assets/resto2.png"}
+          description={
+            "Our restaurant provides a stunning garden feel from the moment you step inside. Surrounded by shady trees, beautiful ornamental plants, and colorful flowers, visitors will feel"
+          }
+          rating={5}
+          open={"18.00"}
+          location={"Bekasi, Jawa Barat"}
         />
       </div>
     </>
