@@ -10,7 +10,7 @@ module.exports = {
         "btn-destination": "#C7D6FF",
       },
       backgroundImage: {
-        "hero-home": "url('/public/assets/home.png')",
+        home: "url('/public/assets/hero.png')",
         logo: "url('/public/assets/Logo.png')",
         explore: "url('/public/assets/explore.png')",
         "category-01": "url('/public/assets/category/category_01.png')",

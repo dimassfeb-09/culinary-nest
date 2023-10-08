@@ -1,19 +1,17 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { BASE_URL } from "../constants/BASE_URL";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapMarkerAlt, faClock } from "@fortawesome/free-solid-svg-icons";
 import CardResto from "../components/CardResto";
+import axios from "axios";
+import { BASE_URL } from "../constants/BASE_URL";
 
 const Search = () => {
   const { search } = useLocation();
   const queryParams = new URLSearchParams(search);
-  const currentCity = queryParams.get("city") || "";
+  const searchRestaurant = queryParams.get("q") || "";
   const navigate = useNavigate();
 
   const [searchCity, setSearchCity] = useState("");
-  const [restaurant, setRestaurant] = useState("");
+  const [restaurants, setRestaurants] = useState([]);
 
   const handleCityChange = (event) => {
     setSearchCity(event.target.value);
@@ -21,7 +19,7 @@ const Search = () => {
 
   const handleSearch = () => {
     if (searchCity) {
-      navigate(`?city=${searchCity}`);
+      navigate(`?q=${searchCity}`);
     }
   };
 
@@ -33,44 +31,11 @@ const Search = () => {
 
   const fetchDataRestaurants = async () => {
     try {
-      //   const res = axios.get(`${BASE_URL}/api/restaurants?city=${currentCity}`);
-      //   setRestaurant(res.data.data);
-
-      setRestaurant([
-        {
-          id: 1,
-          title: "Warung Pak Wardi",
-          description: "Warung Pak Wardi is ...",
-          address: "Jl Kusuma",
-          open: "string",
-          closed: "string",
-          city: "Bekasi",
-          category: "Cafe",
-          photo_restaurant: ["http://google.com/image.png"],
-        },
-        {
-          id: 2,
-          title: "Warung Pak Wardi",
-          description: "Warung Pak Wardi is ...",
-          address: "Jl Kusuma",
-          open: "string",
-          closed: "string",
-          city: "Bekasi",
-          category: "Cafe",
-          photo_restaurant: ["http://google.com/image.png"],
-        },
-        {
-          id: 3,
-          title: "Warung Pak Wardi",
-          description: "Warung Pak Wardi is ...",
-          address: "Jl Kusuma",
-          open: "string",
-          closed: "string",
-          city: "Bekasi",
-          category: "Cafe",
-          photo_restaurant: ["http://google.com/image.png"],
-        },
-      ]);
+      setRestaurants([]);
+      const res = await axios.get(
+        `${BASE_URL}/restaurants/search?q=${searchRestaurant}`
+      );
+      setRestaurants(res.data.data);
     } catch (e) {
       console.log(e);
     }
@@ -78,11 +43,11 @@ const Search = () => {
 
   useEffect(() => {
     fetchDataRestaurants();
-  }, []);
+  }, [searchRestaurant]);
 
   useEffect(() => {
-    if (currentCity) {
-      setSearchCity(currentCity);
+    if (searchRestaurant) {
+      setSearchCity(searchRestaurant);
     }
   }, []);
 
@@ -105,6 +70,7 @@ const Search = () => {
             type="text"
             className="w-full h-full rounded-full px-5"
             value={searchCity}
+            placeholder="Search by resto name, city or district..."
             onChange={handleCityChange}
             onKeyDown={handleKeyPress}
           />
@@ -126,7 +92,7 @@ const Search = () => {
       <div className="bg-cover bg-hero-search h-[300px] w-full">
         <div className="h-[300px] w-full bg-black/50  flex justify-center items-center">
           <div className="text-4xl md:text-7xl font-bold text-white">
-            Taste Map of {currentCity}
+            Taste Map of {searchRestaurant}
           </div>
         </div>
       </div>
@@ -139,7 +105,7 @@ const Search = () => {
             {" "}
             &gt;{" "}
           </span>
-          <div>{currentCity} Destination</div>
+          <div>{searchRestaurant} Destination</div>
         </div>
         <div className="border-[1px] border-solid border-black"></div>
       </div>
@@ -161,26 +127,26 @@ const Search = () => {
         </div>
       </div>
       <div className="flex flex-col mx-5 sm:mx-10 lg:mx-20 mt-20">
-        <CardResto
-          title={"Restoran 1"}
-          imageUrl={"/assets/resto1.png"}
-          description={
-            "Our restaurant provides a stunning garden feel from the moment you step inside. Surrounded by shady trees, beautiful ornamental plants, and colorful flowers, visitors will feel"
-          }
-          rating={5}
-          open={"18.00"}
-          location={"Bekasi, Jawa Barat"}
-        />
-        <CardResto
-          title={"Restoran 2"}
-          imageUrl={"/assets/resto2.png"}
-          description={
-            "Our restaurant provides a stunning garden feel from the moment you step inside. Surrounded by shady trees, beautiful ornamental plants, and colorful flowers, visitors will feel"
-          }
-          rating={5}
-          open={"18.00"}
-          location={"Bekasi, Jawa Barat"}
-        />
+        {restaurants ? (
+          restaurants.map((value) => {
+            return (
+              <CardResto
+                key={value.id}
+                title={value.title}
+                imageUrl={value.photos[0].image_url}
+                description={value.description}
+                rating={5}
+                open={value.open}
+                closed={value.closed}
+                location={value.address}
+              />
+            );
+          })
+        ) : (
+          <div className="flex justify-center items-center text-3xl font-semibold mb-20">
+            Data not found
+          </div>
+        )}
       </div>
     </>
   );

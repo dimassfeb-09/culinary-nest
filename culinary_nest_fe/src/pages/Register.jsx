@@ -96,7 +96,7 @@ const Register = () => {
             </Link>
           </div>
         </div>
-        <div className="bg-hero-home hidden md:block sm:h-screen sm:w-1/2">
+        <div className="bg-home hidden md:block sm:h-screen sm:w-1/2">
           <div className="absolute bottom-0 mt-auto">
             <CardGlass />
           </div>

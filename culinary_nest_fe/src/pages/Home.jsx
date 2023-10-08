@@ -3,8 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import CardCategory from "../components/CardCategory";
 import { KeyboardArrowDown } from "@mui/icons-material";
 import DestinationCardMenu from "../components/DestinationCardMenu";
+import axios from "axios";
+import { BASE_URL } from "../constants/BASE_URL";
+import CardRecommendation from "../components/CardRecommendation";
 
 export default function Home() {
+  const [categories, setCategories] = useState([]);
+  const [recommendation, setRecommendation] = useState([]);
+
   const [keyword, setKeyword] = useState("");
   const navigate = useNavigate();
   const [showDestination, setShowDestination] = useState(false);
@@ -16,7 +22,7 @@ export default function Home() {
   const handleSearch = () => {
     if (keyword) {
       // Arahkan ke halaman pencarian dengan parameter kota
-      navigate(`/search?city=${keyword}`);
+      navigate(`/search?q=${keyword}`);
     }
   };
 
@@ -26,18 +32,37 @@ export default function Home() {
     }
   };
 
-  const fetchDataCategory = () => {
-    console.log("hello world");
+  const fetchDataCategory = async () => {
+    try {
+      const res = await axios.get(`${BASE_URL}/restaurants/category`);
+      if (res.status == 200) {
+        setCategories(res.data.data);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const fetchDataRecommendations = async () => {
+    try {
+      const res = await axios.get(`${BASE_URL}/restaurants/recommendation`);
+      if (res.status == 200) {
+        setRecommendation(res.data.data);
+      }
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   useEffect(() => {
     fetchDataCategory();
+    fetchDataRecommendations();
   }, []);
 
   return (
     <>
-      <div className="h-screen w-full bg-teal-500">
-        <div className="bg-hero-home h-screen bg-cover justify-center items-center flex">
+      <div className="h-screen w-full">
+        <div className="bg-home h-screen bg-cover justify-center items-center flex">
           <nav className="absolute top-0 flex w-full px-14 mt-5 items-center justify-between">
             <img
               className="w-20 h-20"
@@ -123,23 +148,42 @@ export default function Home() {
 
       <div className="w-full flex justify-center items-center mt-10 py-5">
         <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          <CardCategory title={"Restaurant"} />
-          <CardCategory title={"Cafe"} />
-          <CardCategory title={"Steak House"} />
-          <CardCategory title={"Food Court"} />
-          <CardCategory title={"Seafood Shack"} />
-          <CardCategory title={"Tea House"} />
+          {categories.map((value) => (
+            <CardCategory
+              title={value.title}
+              image={value.image_url}
+              key={value.id}
+            />
+          ))}
         </div>
       </div>
 
-      <div className="w-full h-16 mt-14 bg-explore">
+      <div className="w-full h-16 mt-14 bg-explore flex flex-col">
         <div className="text-white flex flex-col justify-center items-center w-full h-16 bg-black bg-opacity-70">
           <div className="text-xl font-bold">Top Recommendation</div>
           <div>based on user reviews</div>
         </div>
       </div>
 
-      <div className="w-full flex flex-col mb-20 justify-center items-center mt-20 gap-14">
+      <div>
+        <div className="flex gap-5 overflow-x-scroll p-5">
+          {recommendation.map((value, _) => {
+            return (
+              <CardRecommendation
+                address={value.address}
+                closed={value.closed}
+                description={value.description}
+                photos={value.photos}
+                open={value.open}
+                title={value.title}
+                key={value.id}
+              />
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="w-full mt-14 flex flex-col mb-20 justify-center items-center gap-14">
         <div className="text-5xl font-bold">Let's Join Us !</div>
         <div className="flex flex-col sm:flex-row gap-10">
           <div className="flex flex-col justify-center items-center gap-5">
